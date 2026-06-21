@@ -1,0 +1,22 @@
+name: Markdown Check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  markdownlint:
+    name: markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Check Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v23
+        with:
+          globs: |
+            *.md
+            **/*.md
